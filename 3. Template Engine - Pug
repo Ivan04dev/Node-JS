@@ -1,0 +1,30 @@
+- Instalación de Pug
+
+npm i pug
+
+- En app.js se habilita de la siguiente manera:
+
+// Habilitar Pug
+app.set('view engine', 'pug');
+
+- Crea la carpeta views y dentro de ella la carpeta layout para definir una plantilla
+
+index.pug
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+    body 
+        h1 Tiendas Cx
+        block contenido
+
+- Para heredar esta plantilla en otras vistas se coloca lo siguiente:
+
+
+extends ./layout/index 
+
+block contenido 
+    p Inicio
