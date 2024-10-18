@@ -1,0 +1,8 @@
+- Crear la carpeta public en la raíz
+
+- Colocar los archivos css, img, js, etc
+
+- En app.js definir la carpeta pública
+
+app.use(express.static('public'));
+
