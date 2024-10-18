@@ -1,0 +1,42 @@
+- Crear el proyecto
+  npm init -y
+
+- Instalar express es similar a apache en PHP
+  npm i express
+
+- Instalar nodemon
+  npm i -D nodemon
+
+- Crear el archivo principal (index || app || server.js)
+
+- Utilizando Common JS
+
+const express = require('express');
+
+const app = express();
+
+const port = process.env.PORT || 4000;
+
+// Routing
+app.ge('/', (req, res) => {
+  res.send('Hola Mundo');
+  res.json({"msg": "Hola"});
+  res.render();
+});
+
+app.listen(port, () => {
+  console.log(`El servidor esta funcionando en el puerto ${port}`);
+})
+
+- Agregar el script en package.json para iniciar la aplicación
+"dev": "nodemon index.js"
+
+- Desde la terminal
+npm run dev
+
+Cambiar a Module JS
+- Se cambia la primer línea por:
+import express from 'express';
+
+Y en el package.json se agrega:
+"type": "module"
