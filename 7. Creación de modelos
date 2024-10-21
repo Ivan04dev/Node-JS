@@ -1,1 +1,32 @@
+- Para crear el modelo se utiliza de Sequelize y una instancia de la conexión a la base de datos
 
+import { Sequelize } from "sequelize";
+import db from "../config/db.js";
+
+// Se define el modelo con los campos y tipo de dato que utilizará
+export const Viaje = db.define('viajes', {
+    titulo: {
+        type: Sequelize.STRING
+    },
+    precio: {
+        type: Sequelize.STRING
+    },
+    fecha_ida: {
+        type: Sequelize.DATE
+    },
+    fecha_vuelta: {
+        type: Sequelize.DATE
+    },
+    image: {
+        type: Sequelize.STRING
+    },
+    descripcion: {
+        type: Sequelize.STRING
+    },
+    disponibles: {
+        type: Sequelize.STRING
+    },
+    slug: {
+        type: Sequelize.STRING
+    }
+})
