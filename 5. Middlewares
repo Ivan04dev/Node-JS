@@ -1,0 +1,11 @@
+- Un middlere es un fragmento de código que permite agregar datos en la respuesta del servidor y ser utilizado en las vistas, 
+el siguiente ejemplo obtiene el año actual y asigna el nombre del sitio:
+
+// Middleware para el año actual y nombre del sitio
+app.use( (req, res, next) => {
+    const year = new Date();
+    res.locals.actualYear = year.getFullYear();
+    res.locals.nombreSitio = 'Agencia de Viajes'
+    next();
+})
+
