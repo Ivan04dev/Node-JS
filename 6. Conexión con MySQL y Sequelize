@@ -1,0 +1,27 @@
+Sequelize es un ORM (Object-Relational Mapping) para Node.js que facilita la interacción con bases de datos SQL. 
+Permite a los desarrolladores trabajar con bases de datos de manera más intuitiva y orientada a objetos, en lugar de tener que escribir consultas SQL manualmente.
+
+- Es necesario instalar los siguientes paquetes: mysql2 y sequelize
+npm i mysql2 sequelize
+
+- Crear la carpeta config y dentro db.js
+
+import { Sequelize } from "sequelize";
+
+const db = new Sequelize('agenciaviajes', 'root', 'root', {
+    host: '127.0.0.1',
+    port: '3306',
+    dialect: 'mysql',
+    define: {
+        timestamps: false
+    }, 
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 1000
+    },
+    operatorsAliases: false
+});
+
+export default db;
