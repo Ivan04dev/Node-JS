@@ -1,0 +1,51 @@
+- Se crea la carpeta controllers
+
+const paginaInicio = (req, res) => {
+    res.render('inicio', {
+        pagina: 'Inicio'
+    })
+}
+
+const paginaNosotros = (req, res) => {
+    res.render('nosotros', {
+        pagina: 'Nosotros'
+    })
+}
+
+const paginaProyectos = (req, res) => {
+    res.render('proyectos', {
+        pagina: 'Proyectos'
+    })
+}
+
+const paginaContacto = (req, res) => {
+    res.render('contacto', {
+        pagina: 'Contacto'
+    })
+}
+
+export {
+    paginaInicio,
+    paginaNosotros,
+    paginaProyectos,
+    paginaContacto
+}
+
+-------------------------------------------------------------------------------------------
+
+routes/index.js
+
+import express from 'express';
+import { paginaInicio, paginaNosotros, paginaProyectos, paginaContacto } from '../controllers/paginasController.js';
+
+const router = express.Router();
+
+router.get('/', paginaInicio)
+
+router.get('/nosotros', paginaNosotros)
+
+router.get('/proyectos', paginaProyectos)
+
+router.get('/contacto', paginaContacto)
+
+export default router;
