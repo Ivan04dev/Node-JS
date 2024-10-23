@@ -1,0 +1,11 @@
+- Sequelize utiliza diferentes métodos para consultar una base de datos, por ejemplo:
+- findAll
+- findAll where
+- findOne
+
+https://sequelize.org/api/v6/class/src/model.js~model
+
+cotrollers/paginasController.js
+
+const paginaViajes = (req, res) => {
+  // Consultar 
