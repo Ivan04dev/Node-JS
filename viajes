@@ -1,0 +1,17 @@
+INSERT INTO viajes (titulo, precio, fecha_ida, fecha_vuelta, imagen, descripcion, disponibles, slug)
+VALUES('Italia', 50000, '2023-06-24', '2023-06-30', 'roma', 'Praesent tincidunt ante at justo semper volutpat', 32, 'viaje-italia');
+
+INSERT INTO viajes (titulo, precio, fecha_ida, fecha_vuelta, imagen, descripcion, disponibles, slug)
+VALUES('Canada', 60000, '2023-07-19', '2023-06-30', 'canada', 'Praesent tincidunt ante at justo semper volutpat', 25, 'viaje-canada');
+
+INSERT INTO viajes (titulo, precio, fecha_ida, fecha_vuelta, imagen, descripcion, disponibles, slug)
+VALUES('Grecia', 70000, '2023-08-29', '2023-09-15', 'roma', 'Praesent tincidunt ante at justo semper volutpat', 18, 'viaje-francia');
+
+INSERT INTO viajes (titulo, precio, fecha_ida, fecha_vuelta, imagen, descripcion, disponibles, slug)
+VALUES('Inglaterra', 80000, '2023-09-22', '2023-10-03', 'roma', 'Praesent tincidunt ante at justo semper volutpat', 22, 'viaje-inglaterra');
+
+INSERT INTO viajes (titulo, precio, fecha_ida, fecha_vuelta, imagen, descripcion, disponibles, slug)
+VALUES('Rio de Janeiro', 90000, '2023-04-16', '2023-04-25', 'roma', 'Praesent tincidunt ante at justo semper volutpat', 23, 'viaje-rio-de-janeiro');
+
+INSERT INTO viajes (titulo, precio, fecha_ida, fecha_vuelta, imagen, descripcion, disponibles, slug)
+VALUES('Francia', 100000, '2023-04-03', '2023-04-10', 'roma', 'Praesent tincidunt ante at justo semper volutpat', 14, 'viaje-francia');
