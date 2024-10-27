@@ -1,0 +1,93 @@
+1. Se importa la conexión a la base de datos
+2. Se crea un modelo base para heredarlo a nuevos modelos
+3. Dentro del modelo base se crean los métodos para el CRUD
+
+import connectToDatabase from "../config/db.js";
+
+class BaseModel {
+    constructor(tableName) {
+        this.tableName = tableName;
+    }
+
+    // Establece la conexión 
+    async getConnection() {
+        return await connectToDatabase();
+    }
+
+    // Seleccionar todo
+    async findAll() {
+        const connection = await this.getConnection();
+
+        try {
+            const result = await connection.execute(`SELECT * FROM ${this.tableName}`);
+            return result.rows;
+        } catch (error) {
+            console.log(`Error en findAll para ${this.tableName}:`, error)
+        } finally {
+            await connection.close();
+        }
+    }
+
+    // Seleccionar por id
+    async findById(id) {
+        const connection = await this.getConnection();
+        try {
+            const result = await connection.execute(`SELECT * FROM ${this.tableName} WHERE id = :id`, [id]);
+            return result.rows[0];
+        } catch (error) {
+            console.log(`Error en findById para ${this.tableName}`, error);
+        } finally {
+            await connection.close();
+        }
+    }
+
+    // Insertar
+    async create(data) {
+        const connection = await this.getConnection();
+        const columns = Object.keys(data).join(", ");
+        const placeholders = Object.keys(data).map((key) => `:${key}`).join(", ");
+
+        try {
+            await connection.execute(`INSERT INTO ${this.tableName} (${columns}) VALUES (${placeholders})`, data);
+            return { success: true, message: 'Registro creado exitosamente' };
+        } catch (error) {
+            console.log(`Error en create para ${this.tableName}:`, error);
+            throw error;
+        } finally {
+            await connection.close();
+        }
+    }
+
+    // Actualizar
+    async update(id, data) {
+        const connection = await this.getConnection();
+        const updates = Object.keys(data).map((key) => `${key} = :${key}`).join(", ");
+
+        try {
+            await connection.execute(`UPDATE ${this.tableName} SET ${updates} WHERE id = :id`, { ...data, id });
+            return { success: true, message: 'Registro actualizado exitosamente' };
+        } catch (error) {
+            console.log(`Error en update para ${this.tableName}:`, error);
+            throw error;
+        } finally {
+            await connection.close();
+        }
+    }
+
+    // Eliminar
+    async delete(id) {
+        const connection = await this.getConnection();
+
+        try {
+            await connection.execute(`DELETE FROM ${this.tableName} WHERE id = :id`, [id]);
+            return { success: true, message: 'Registro eliminado exitosamente' };
+        } catch (error) {
+            console.log(`Error en delete para ${this.tableName}:`, error);
+            throw error;
+        } finally {
+            await connection.close();
+        }
+    }
+}
+
+export default BaseModel;
