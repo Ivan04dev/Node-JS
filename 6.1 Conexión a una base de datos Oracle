@@ -1,0 +1,37 @@
+En config/db.js
+
+import oracle from 'oracledb';
+
+// Oracle 
+async function connectToDatabase() {
+    let connection;
+    try {
+        connection = await oracle.getConnection({
+            user: 'system',
+            password: 'admin',
+            // host:port/service_name
+            connectString: '127.0.0.1:1521'
+        });
+        console.log('Base de datos conectada');
+        return connection;
+    } catch (error) {
+        console.log('Error al conectar a la base de datos', error);
+        throw error;
+    } 
+
+}
+
+export default connectToDatabase;
+
+------------------------------------------------------------------------------------
+
+En app.js
+
+// Conexión a la base de datos de Oracle 
+connectToDatabase()
+    .then(connection => {
+        console.log('Base de datos conectada exitosamente');
+    })
+    .catch(error => {
+        console.log('No se pudo conectar a la base de datos', error);
+    })
